@@ -2,8 +2,9 @@ from flitter.message import Message
 
 
 class Flitter:
-    def __init__(self, message_store):
+    def __init__(self, message_store, follow_store):
         self.message_store = message_store
+        self.follow_store = follow_store
 
     def post(self, author, message):
         """
@@ -16,6 +17,7 @@ class Flitter:
         :return: nothing
         :rtype: void
         """
+
         self.message_store.add(Message(author=author, text=message))
 
     def get_feed_for(self, user):
@@ -28,8 +30,12 @@ class Flitter:
         :rtype: list(dict(author=string, message=string))
         """
 
-        return [dict(author=msg.author, message=msg.text)
-                for msg in self.message_store.fetch_by(user)]
+        feed = self.message_store.fetch_by(user)
+
+        for followee in self.follow_store.get_followees_for(user):
+            feed = feed + self.message_store.fetch_by(followee)
+
+        return [dict(author=msg.author, message=msg.text) for msg in feed]
 
     def follow(self, follower, followee):
         """
@@ -41,4 +47,5 @@ class Flitter:
         :return: nothing
         :rtype: void
         """
-        pass
+
+        self.follow_store.add(follower=follower, followee=followee)

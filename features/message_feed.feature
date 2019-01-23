@@ -20,11 +20,11 @@ Feature: Posting messages
     When Alice views their feed
     Then they cannot see the message "Bob here" by Bob
 
-#  Scenario: The user sees a message from someone they follow
-#    Given Bob has posted a message "Bob here again"
-#    And Alice follows Bob
-#    When Alice views their feed
-#    Then they can see the message "Bob here again" by Bob
+  Scenario: The user sees a message from someone they follow
+    Given Bob has posted a message "Bob here again"
+    And Alice follows Bob
+    When Alice views their feed
+    Then they can see the message "Bob here again" by Bob
 
   # Rule: Users see messages which mention them
 

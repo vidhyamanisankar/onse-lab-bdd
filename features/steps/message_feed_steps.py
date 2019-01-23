@@ -8,7 +8,7 @@ def post_message(context, author, message):
 
 @given('{follower} follows {followee}')
 def follow(context, follower, followee):
-    raise NotImplementedError(context.errorMessage)
+    context.app.follow(follower=follower, followee=followee)
 
 
 @given('{follower} is not following {followee}')
