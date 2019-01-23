@@ -23,3 +23,12 @@ def test_fetch_by_returns_the_messages_by_a_given_user(message_store):
 
     assert message1 in messages
     assert message2 in messages
+
+
+def test_fetch_by_does_not_return_message_by_other_users(message_store):
+    message = Message(author='bob', text='hi')
+    message_store.add(message)
+
+    messages = message_store.fetch_by('alice')
+
+    assert message not in messages

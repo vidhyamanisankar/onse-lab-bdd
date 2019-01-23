@@ -6,4 +6,4 @@ class InMemoryMessageStore:
         self.messages.append(message)
 
     def fetch_by(self, user):
-        return self.messages
+        return [msg for msg in self.messages if msg.author == user]

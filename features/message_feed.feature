@@ -14,12 +14,12 @@ Feature: Posting messages
 
   # Rule: Users see messages written by people they follow
 
-#  Scenario: The user doesn't see message from people they're not following
-#    Given Bob has posted a message "Bob here"
-#    And Alice is not following Bob
-#    When Alice views their feed
-#    Then they cannot see the message "Bob here" by Bob
-#
+  Scenario: The user doesn't see message from people they're not following
+    Given Bob has posted a message "Bob here"
+    And Alice is not following Bob
+    When Alice views their feed
+    Then they cannot see the message "Bob here" by Bob
+
 #  Scenario: The user sees a message from someone they follow
 #    Given Bob has posted a message "Bob here again"
 #    And Alice follows Bob

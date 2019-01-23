@@ -13,7 +13,7 @@ def follow(context, follower, followee):
 
 @given('{follower} is not following {followee}')
 def do_not_follow(context, follower, followee):
-    raise NotImplementedError(context.errorMessage)
+    pass  # Do nothing
 
 
 @when('{user} views their feed')
@@ -28,4 +28,4 @@ def assert_can_see_message(context, message, author):
 
 @then('they cannot see the message "{message}" by {author}')
 def assert_cannot_see_message(context, message, author):
-    raise NotImplementedError(context.errorMessage)
+    assert dict(author=author, message=message) not in context.feed
