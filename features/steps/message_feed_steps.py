@@ -23,9 +23,15 @@ def view_feed(context, user):
 
 @then('they can see the message "{message}" by {author}')
 def assert_can_see_message(context, message, author):
-    assert dict(author=author, message=message) in context.feed
+    feed = context.feed
+    expected = dict(author=author, message=message)
+
+    assert expected in feed, f'{expected} should be in {feed}'
 
 
 @then('they cannot see the message "{message}" by {author}')
 def assert_cannot_see_message(context, message, author):
-    assert dict(author=author, message=message) not in context.feed
+    feed = context.feed
+    expected = dict(author=author, message=message)
+
+    assert expected not in feed, f'{expected} should not be in {feed}'
