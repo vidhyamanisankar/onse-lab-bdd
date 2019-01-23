@@ -1,6 +1,9 @@
+from flitter.message import Message
+
+
 class Flitter:
-    def __init__(self):
-        self.feed = []
+    def __init__(self, message_store):
+        self.message_store = message_store
 
     def post(self, author, message):
         """
@@ -13,7 +16,7 @@ class Flitter:
         :return: nothing
         :rtype: void
         """
-        self.feed.append(dict(author=author, message=message))
+        self.message_store.add(Message(author=author, text=message))
 
     def get_feed_for(self, user):
         """
@@ -21,10 +24,12 @@ class Flitter:
 
         :param user: The user to get messages for
         :type user: string
-        :return: All the message as a list of dicts containing author and message
+        :return: All the message in the feed for a given user
         :rtype: list(dict(author=string, message=string))
         """
-        return self.feed
+
+        return [dict(author=msg.author, message=msg.text)
+                for msg in self.message_store.fetch_by(user)]
 
     def follow(self, follower, followee):
         """
