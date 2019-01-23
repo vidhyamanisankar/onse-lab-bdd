@@ -1,4 +1,7 @@
 class Flitter:
+    def __init__(self):
+        self.feed = []
+
     def post(self, author, message):
         """
         Post a message
@@ -10,7 +13,7 @@ class Flitter:
         :return: nothing
         :rtype: void
         """
-        pass
+        self.feed.append(dict(author=author, message=message))
 
     def get_feed_for(self, user):
         """
@@ -21,7 +24,7 @@ class Flitter:
         :return: All the message as a list of dicts containing author and message
         :rtype: list(dict(author=string, message=string))
         """
-        pass
+        return self.feed
 
     def follow(self, follower, followee):
         """
