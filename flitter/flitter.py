@@ -34,8 +34,10 @@ class Flitter:
 
         for followee in self.follow_store.get_followees_for(user):
             feed = feed + self.message_store.fetch_by(followee)
-
+        feed = feed + self.message_store.fetch_by_mention(user)
         return [dict(author=msg.author, message=msg.text) for msg in feed]
+
+
 
     def follow(self, follower, followee):
         """

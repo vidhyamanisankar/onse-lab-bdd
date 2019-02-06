@@ -32,3 +32,12 @@ def test_fetch_by_does_not_return_message_by_other_users(message_store):
     messages = message_store.fetch_by('alice')
 
     assert message not in messages
+
+
+def test_fetch_by_mention(message_store):
+    message = Message(author='alice', text='I like @Bob')
+    message_store.add(message)
+
+    messages = message_store.fetch_by_mention('Bob')
+
+    assert message in messages

@@ -28,27 +28,27 @@ Feature: Posting messages
 
   # Rule: Users see messages which mention them
 
-#  Scenario: The user has been mentioned in a message
-#    Given Alice has posted a message "I like @Bob"
-#    When Bob views their feed
-#    Then they can see the message "I like @Bob" by Alice
-#
-#  Scenario: The user with a similar name has been mentioned
-#    Given Alice has posted a message "I like @BobHope"
-#    When Bob views their feed
-#    Then they cannot see the message "I like @BobHope" by Alice
-#
-#  Scenario: The user is mentioned in the middle of a message
-#    Given Alice has posted a message "I like @Bob a lot"
-#    When Bob views their feed
-#    Then they can see the message "I like @Bob a lot" by Alice
-#
-#  Scenario: The user mention is in a different case
-#    Given Alice has posted a message "I like @bOb"
-#    When Bob views their feed
-#    Then they can see the message "I like @bOb" by Alice
-#
-#  Scenario: The user mention is not a separated word
-#    Given Alice has posted a message "Ilike@Bob"
-#    When Bob views their feed
-#    Then they cannot see the message "Ilike@Bob" by Alice
+  Scenario: The user has been mentioned in a message
+    Given Alice has posted a message "I like @Bob"
+    When Bob views their feed
+    Then they can see the message "I like @Bob" by Alice
+
+  Scenario: The user with a similar name has been mentioned
+    Given Alice has posted a message "I like @BobHope"
+    When Bob views their feed
+    Then they cannot see the message "I like @BobHope" by Alice
+
+  Scenario: The user is mentioned in the middle of a message
+    Given Alice has posted a message "I like @Bob a lot"
+    When Bob views their feed
+    Then they can see the message "I like @Bob a lot" by Alice
+
+  Scenario: The user mention is in a different case
+    Given Alice has posted a message "I like @bOb"
+    When Bob views their feed
+    Then they can see the message "I like @bOb" by Alice
+
+ Scenario: The user mention is not a separated word
+  Given Alice has posted a message "Ilike@Bob"
+  When Bob views their feed
+  Then they cannot see the message "Ilike@Bob" by Alice
